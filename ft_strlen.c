@@ -6,7 +6,7 @@
 /*   By: jtahirov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/30 05:12:13 by jtahirov          #+#    #+#             */
-/*   Updated: 2017/09/26 06:53:31 by jtahirov         ###   ########.fr       */
+/*   Updated: 2017/09/28 03:27:03 by jtahirov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 size_t	ft_strlen(const char *str)
 {
-	size_t counter;
+	const char *start;
 
-	counter = 0;
-	while (*(str + counter))
-		counter++;
-	return (counter);
+	start = str;
+	while (*str)
+		str++;
+	return ((size_t)(str - start));
 }

@@ -6,7 +6,7 @@
 /*   By: jtahirov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/18 15:57:50 by jtahirov          #+#    #+#             */
-/*   Updated: 2017/09/27 20:44:56 by jtahirov         ###   ########.fr       */
+/*   Updated: 2017/09/30 17:59:42 by jtahirov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@
 # define ABS(x) (((x) < 0) ? -(x) : (x))
 # define TRUE 1
 # define FALSE 0
+# define SPACE ft_putchar(' ');
+# define NEW_LINE ft_putchar('\n');
 
 typedef struct	s_list
 {
@@ -31,15 +33,7 @@ typedef struct	s_list
 	struct s_list	*next;
 }				t_list;
 
-typedef struct	s_dlist
-{
-	void			*content;
-	size_t			content_size;
-	struct s_dlist	*next;
-	struct s_dlist	*previous;
-}				t_dlist;
-
-typedef	char	t_byte;
+typedef	unsigned char	t_byte;
 
 void			ft_putchar(char z);
 void			ft_putstr(const char *str);
@@ -105,9 +99,7 @@ void			ft_lstdel(t_list **alst, void (*del)(void *, size_t));
 void			ft_lstadd(t_list **alst, t_list *new);
 void			ft_lstiter(t_list *lst, void (*f)(t_list *elem));
 t_list			*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
-t_dlist			*ft_dlstnew(t_dlist **head, void *content, size_t content_size);
-void			ft_traverse_fwd(t_dlist *head, t_dlist *(*f)(t_dlist *elem));
-void			ft_traverse_bwd(t_dlist *head, t_dlist *(*f)(t_dlist *elem));
-void			ft_dlst_show_int(void *content);
+void			*ft_bubblesort(int *array, size_t array_size);
+void			ft_print_array_int(int *array, size_t array_size);
 
 #endif

@@ -6,7 +6,7 @@
 #    By: jtahirov <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/07/11 13:01:35 by jtahirov          #+#    #+#              #
-#    Updated: 2017/09/27 20:46:39 by jtahirov         ###   ########.fr        #
+#    Updated: 2017/09/30 17:53:34 by jtahirov         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 NAME = libft.a
@@ -24,22 +24,26 @@ SRC = ft_isascii.c ft_memcmp.c ft_strchr.c ft_strlen.c ft_strrchr.c 		\
 	  ft_putchar_fd.c ft_putstr_fd.c ft_putendl_fd.c ft_putnbr_fd.c ft_strnlen.c	\
 	  ft_lstnew.c ft_lstdelone.c ft_lstadd.c ft_lstiter.c ft_lstmap.c 	\
 	  ft_lstdel.c ft_bzero_bwd.c ft_memcpy_bwd.c ft_isspace.c ft_print2d.c 	\
-	  ft_print_byte.c ft_dlstnew.c ft_traverse_fwd.c ft_traverse_bwd.c ft_dlst_show_int.c \
+	  ft_print_byte.c ft_bubblesort.c ft_print_array_int.c
 
 OBJECT = $(SRC:.c=.o)
 
 all: $(NAME)
 
 $(NAME):
-	$(GCCW) -I./includes -c $(SRC)
-	ar rc $(NAME) $(OBJECT)
-	ranlib $(NAME)
+	@echo "Compiling..."
+	@$(GCCW) -I./includes -c $(SRC)
+	@ar rc $(NAME) $(OBJECT)
+	@ranlib $(NAME)
+	@echo "\nFinished!\n"
 
 clean:
-	/bin/rm -f $(OBJECT)
+	@echo "Cleanning...\n"
+	@/bin/rm -f $(OBJECT)
+	@echo "Cleaned\n"
 
 fclean: clean
-	/bin/rm -f $(NAME)
+	@/bin/rm -f $(NAME)
 
 re: fclean all
 
