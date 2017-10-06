@@ -6,9 +6,10 @@
 #    By: jtahirov <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/07/11 13:01:35 by jtahirov          #+#    #+#              #
-#    Updated: 2017/10/06 14:26:06 by jtahirov         ###   ########.fr        #
+#    Updated: 2017/10/06 14:27:07 by jtahirov         ###   ########.fr        #
 #                                                                              #
-**************************************************************************** #
+# **************************************************************************** #
+
 NAME = libft.a
 GCCW = gcc -Wall -Wextra -Werror
 SRC = ft_isascii.c ft_memcmp.c ft_strchr.c ft_strlen.c ft_strrchr.c 		\
