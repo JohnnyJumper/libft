@@ -1,27 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_dlst_show_int.c                                 :+:      :+:    :+:   */
+/*   ft_lstpush.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jtahirov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/09/26 23:35:25 by jtahirov          #+#    #+#             */
-/*   Updated: 2017/09/27 00:02:40 by jtahirov         ###   ########.fr       */
+/*   Created: 2017/10/07 15:11:11 by jtahirov          #+#    #+#             */
+/*   Updated: 2017/10/07 15:20:53 by jtahirov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_dlst_show_int(void *content)
+void	ft_lstpush(t_list **list, t_list *new)
 {
-	int		*data;
+	t_list *current;
 
-	data = (int*)content;
-	while (*data)
+	current = *list;
+	if (!*list)
+		*list = new;
+	else
 	{
-		ft_putnbr(*data);
-		ft_putstr("->");
-		data++;
+		while (current->next)
+			current = current->next;
+		current->next = new;
 	}
-	ft_putchar('\n');
 }
