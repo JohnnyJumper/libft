@@ -1,30 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*   ft_strmjoin.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jtahirov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/09/23 02:26:29 by jtahirov          #+#    #+#             */
-/*   Updated: 2017/10/13 22:30:51 by jtahirov         ###   ########.fr       */
+/*   Created: 2017/11/08 20:26:44 by jtahirov          #+#    #+#             */
+/*   Updated: 2017/11/08 20:32:32 by jtahirov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdarg.h>
 
-char	*ft_strjoin(char const *s1, char const *s2)
+char	*ft_strmjoin(int num, ...)
 {
-	int		s1_length;
-	int		s2_length;
-	char	*new;
+	va_list ap;
+	char	*res;
+	char	*tmp;
+	char	*arg;
 
-	s1_length = ft_strlen(s1);
-	s2_length = ft_strlen(s2);
-	new = ft_strnew(s1_length + s2_length);
-	if (!new)
-		return (NULL);
-	while (*s1 || *s2)
-		*new++ = (*s1) ? *s1++ : *s2++;
-	*new = '\0';
-	return (new - s1_length - s2_length);
+	res = ft_strnew(0);
+	va_start(ap, num);
+	while (num--)
+	{
+		arg = va_arg(ap, char *);
+		tmp = res;
+		res = ft_strjoin(tmp, arg);
+		ft_memdel((void **)&tmp);
+	}
+	va_end(ap);
+	return (res);
 }

@@ -6,7 +6,7 @@
 /*   By: jtahirov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/25 22:35:44 by jtahirov          #+#    #+#             */
-/*   Updated: 2017/09/26 06:38:42 by jtahirov         ###   ########.fr       */
+/*   Updated: 2017/10/17 17:51:56 by jtahirov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ t_list	*ft_lstnew(void const *content, size_t content_size)
 		new->next = NULL;
 		return (new);
 	}
-	new->content = ft_memalloc(content_size);
+	new->content = ft_memalloc(sizeof(content));
 	if (!new->content)
 		return (NULL);
 	new->content_size = content_size;

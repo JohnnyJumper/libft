@@ -1,30 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*   ft_dectooctal.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jtahirov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/09/23 02:26:29 by jtahirov          #+#    #+#             */
-/*   Updated: 2017/10/13 22:30:51 by jtahirov         ###   ########.fr       */
+/*   Created: 2017/11/01 18:24:26 by jtahirov          #+#    #+#             */
+/*   Updated: 2017/11/24 20:59:06 by jtahirov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strjoin(char const *s1, char const *s2)
+char	*ft_dectooctal(unsigned long long int num)
 {
-	int		s1_length;
-	int		s2_length;
-	char	*new;
+	char	arr[32];
+	char	*asw;
+	int		counter;
 
-	s1_length = ft_strlen(s1);
-	s2_length = ft_strlen(s2);
-	new = ft_strnew(s1_length + s2_length);
-	if (!new)
-		return (NULL);
-	while (*s1 || *s2)
-		*new++ = (*s1) ? *s1++ : *s2++;
-	*new = '\0';
-	return (new - s1_length - s2_length);
+	ft_bzero(arr, 32);
+	asw = ft_strnew(32);
+	counter = 0;
+	if (num == 0)
+		arr[counter++] = '0';
+	while (num)
+	{
+		arr[counter++] = num % 8 + 48;
+		num /= 8;
+	}
+	asw = ft_strcpy(asw, ft_strrev(arr));
+	return (asw);
 }

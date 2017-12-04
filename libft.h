@@ -6,7 +6,7 @@
 /*   By: jtahirov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/18 15:57:50 by jtahirov          #+#    #+#             */
-/*   Updated: 2017/10/10 18:27:06 by jtahirov         ###   ########.fr       */
+/*   Updated: 2017/11/21 19:52:44 by jtahirov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define LIBFT_H
 
 # include <string.h>
+# include <wchar.h>
 # define ATOI_CONDITION *str == ' ' || *str == '\t' || ATOI_CONDITION2
 # define ATOI_CONDITION2 *str == '\n' || *str == '\v' || ATOI_CONDITION3
 # define ATOI_CONDITION3 *str == '\f' || *str == '\r'
@@ -21,10 +22,13 @@
 # define MIN_INT -2147483648
 # define MAX_INT 2147483647
 # define ABS(x) (((x) < 0) ? -(x) : (x))
+# define MAX(x, y) (x > y) ? (x) : (y)
+# define MIN(x, y) (x > y) ? (y) : (x)
 # define TRUE 1
 # define FALSE 0
-# define SPACE ft_putchar(' ');
-# define NEW_LINE ft_putchar('\n');
+# define SPACE ft_putchar(' ')
+# define NEW_LINE ft_putchar('\n')
+# define LONGSIZE (sizeof(long) * 8 + 1)
 
 typedef struct	s_list
 {
@@ -40,6 +44,7 @@ void			ft_putstr(const char *str);
 void			ft_putnbr(int num);
 size_t			ft_strlen(const char *str);
 size_t			ft_strnlen(const char *str, size_t n);
+int				ft_wcharlen(wchar_t wc);
 void			*ft_memset(void *b, int c, size_t len);
 void			ft_bzero(void *s, size_t n);
 void			ft_bzero_bwd(void *s, size_t n);
@@ -53,6 +58,8 @@ char			*ft_strcpy(char *des, const char *src);
 char			*ft_strncpy(char *des, const char *src, size_t n);
 char			*ft_strcat(char *dest, const char *src);
 char			*ft_strncat(char *dest, const char *src, size_t n);
+char			*ft_strrev(const char *str);
+char			*ft_strupper(char *str);
 size_t			ft_strlcat(char *dest, const char *csrc, size_t size);
 int				ft_memcmp(const void *s1, const void *s2, size_t n);
 char			*ft_strchr(const char *s, int c);
@@ -70,6 +77,8 @@ int				ft_isprint(int c);
 int				ft_toupper(int c);
 int				ft_tolower(int c);
 int				ft_isspace(char x);
+int				ft_isletter(char x);
+int				ft_iscapital(char x);
 void			*ft_memalloc(size_t size);
 void			ft_memdel(void **ap);
 char			*ft_strnew(size_t size);
@@ -102,6 +111,11 @@ t_list			*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
 void			*ft_bubblesort(int *array, size_t array_size);
 void			ft_print_array_int(int *array, size_t array_size);
 void			ft_lstpush(t_list **list, t_list *new);
-void			*ft_push(void *array, size_t array_size, const void *data, size_t data_size);
+char			*ft_strnjoin(char const *s1, char const *s2, int size);
+char			*ft_dectohex(unsigned long long int num);
+char			*ft_dectooctal(unsigned long long int num);
+char			*ft_ltoa(unsigned long n, int base);
+char			*ft_strmjoin(int num, ...);
+char			*ft_get_binary(unsigned char octet);
 
 #endif

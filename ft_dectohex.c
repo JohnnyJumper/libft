@@ -1,30 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*   ft_dectohex.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jtahirov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/09/23 02:26:29 by jtahirov          #+#    #+#             */
-/*   Updated: 2017/10/13 22:30:51 by jtahirov         ###   ########.fr       */
+/*   Created: 2017/11/01 17:24:14 by jtahirov          #+#    #+#             */
+/*   Updated: 2017/11/14 21:00:54 by jtahirov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strjoin(char const *s1, char const *s2)
+char	*ft_dectohex(unsigned long long int num)
 {
-	int		s1_length;
-	int		s2_length;
-	char	*new;
+	char	arr[32];
+	char	*ans;
+	int		remainder;
+	int		counter;
 
-	s1_length = ft_strlen(s1);
-	s2_length = ft_strlen(s2);
-	new = ft_strnew(s1_length + s2_length);
-	if (!new)
-		return (NULL);
-	while (*s1 || *s2)
-		*new++ = (*s1) ? *s1++ : *s2++;
-	*new = '\0';
-	return (new - s1_length - s2_length);
+	counter = 0;
+	ft_bzero(arr, 32);
+	ans = ft_strnew(32);
+	if (num == 0)
+		arr[counter++] = '0';
+	while (num)
+	{
+		remainder = num % 16;
+		if (remainder < 10)
+			arr[counter++] = remainder + 48;
+		else
+			arr[counter++] = remainder + 87;
+		num /= 16;
+	}
+	ans = ft_strcpy(ans, ft_strrev(arr));
+	return (ans);
 }
